@@ -20,7 +20,7 @@ function displayBooks(books) {
     row.innerHTML = books
         .map(
             (book, i) => `
-                    <div class="card">
+                    <div class="card col-md-3">
                         <div class="img-container">
                             <img src="${book.img}" class="card-img-top" alt="..." />
                         </div>
@@ -29,8 +29,8 @@ function displayBooks(books) {
                             <p class="card-text">
                                 Price: ${book.price}
                             </p>
-                            <a href="#" class="btn btn-dark btnAdd" onClick="btnAdd(event, ${i})">Drop in cart</a>
-                            <a href="#" class="btn btn-secondary btnEdit" onClick="btnSkip(event)">Pass</a>
+                            <button class="btn btn-dark btnAdd" onClick="btnAdd(event, ${i})">Drop in cart</button>
+                            <button class="btn btn-secondary btnEdit" onClick="btnSkip(event)">Pass</button>
                         </div>
                     </div>
             `
@@ -39,6 +39,7 @@ function displayBooks(books) {
 }
 
 const btnSkip = (event) => {
+    //event.parerntNode.removeChild(event.target);
     event.target.closest(".card").remove();
 };
 
@@ -53,6 +54,7 @@ const bookToBuy = (books) => {
     cart.innerHTML = books
         .map(
             (book, i) => `
+            
                     <div class="card card-cart">
                     <div class="img-container">
                     <img src="${book.img}" class="card-img-top" alt="..." />
@@ -62,9 +64,10 @@ const bookToBuy = (books) => {
                             <p class="card-text">
                                 Price: ${book.price}
                             </p>
-                            <a href="#" class="btn btn-secondary" onClick="btnDeleteBookCart(event)">remove</a>
+                            <button class="btn btn-secondary" onClick="btnDeleteBookCart(event)">remove</button>
                         </div>
                     </div>
+                
             `
         )
         .join("");
