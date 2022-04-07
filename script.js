@@ -29,8 +29,8 @@ function displayBooks(books) {
                             <p class="card-text">
                                 Price: ${book.price}
                             </p>
-                            <a href="#" class="btn btn-dark btnAdd" onClick="btnAdd(event, ${i})">I Take It</a>
-                            <a href="#" class="btn btn-secondary btnEdit" onClick="btnSkip(event)">Nope</a>
+                            <a href="#" class="btn btn-dark btnAdd" onClick="btnAdd(event, ${i})">Drop in cart</a>
+                            <a href="#" class="btn btn-secondary btnEdit" onClick="btnSkip(event)">Pass</a>
                         </div>
                     </div>
             `
