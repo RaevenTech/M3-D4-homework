@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<!--
+            You are creating the "shopping cart experience" for a Online Marketplace.
+            You have the list of the available books from the current API:
+            https://striveschool-api.herokuapp.com/books
+            What you have to do is:
+            0) Get all the products from the API using a fetch
+            1) Display the list of items available on the page using template literals `` and .forEach
+            2) Add a "add to cart button"
+            3) When the button is pressed, change the style of the item and add it to another list
+            4) Add "skip" button next to each item
+            5) When pressed, the button should remove from the page the item not interesting from the user
+            6) Add a "search bar". When the user types more than 3 chars, you should filter the content of the page to show only the items with a matching name (hint: use .filter method)
+            7) Allow the user to delete items from the cart list
+            
+            [EXTRA]
+            8) Add a "clean cart" button, to clean the whole list.
+            9) Create a second "detail page" for the product. When the user clicks on a product name, 
+            the app should redirect him to the secondary page, passing the ASIN in query string
+            10) In page "detail" show some details of the selected product
+             (https://striveschool-api.herokuapp.com/books/1940026091 to fetch the details of a specific book)
+        -->
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -17,10 +38,73 @@
         />
         <link rel="stylesheet" href="style.css" />
 
-        <title>Hello, world!</title>
+        <title>M3-D4 homework</title>
     </head>
     <body>
-        <h1>Hello, world!</h1>
+        <h1>---- SKOOBS -----</h1>
+        <h5>Find it here</h5>
+        <!------------- search ------------------------------------------->
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            onchange="filterBooks(title.value)"
+        />
+        <!----------------- books ------------------------------------------->
+        <h1>BOOK STORE</h1>
+        <div class="main-container">
+            <div class="conatiner mt-3">
+                <div class="row"></div>
+            </div>
+        </div>
+        <!--------------- cart ------------------------------------------------->
+        <h1>CHECK OUT</h1>
+        <section id="cart">
+            <div class="cart-container">
+                <div>
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        onClick="removeAll()"
+                    >
+                        All Gone
+                    </button>
+                </div>
+                <div class="cart-list"></div>
+            </div>
+        </section>
+        <section class="extra-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Modal title
+                        </h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">...</div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-dark">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
